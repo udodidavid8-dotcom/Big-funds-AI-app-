@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People AI</title>
+<script src="https://js.puter.com/v2/"></script>
+<style>
+body{font-family:Arial;padding:20px;background:#111;color:white}
+input{width:100%;padding:12px;margin:10px 0;border-radius:8px}
+button{padding:12px 20px;background:#0af;border:none;border-radius:8px;color:white;width:100%}
+#ans{margin-top:20px;background:#222;padding:15px;border-radius:10px;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<h2>People AI - English Assistant</h2>
+<p>Ask anything for everyday people</p>
+<input id="q" placeholder="Type your question in English...">
+<button onclick="ask()">Ask AI</button>
+<div id="ans">Answer go show here...</div>
+<script>
+async function ask(){
+ let q=document.getElementById('q').value;
+ if(!q)return;
+ document.getElementById('ans').innerText="Thinking...";
+ let resp = await puter.ai.chat("You are a helpful assistant for everyday people. Speak clear simple English. Question: "+q);
+ document.getElementById('ans').innerText=resp.message.content[0].text;
+}
+</script>
+</body>
+</html>
